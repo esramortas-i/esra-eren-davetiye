@@ -264,14 +264,6 @@ export default function App() {
         }}
       ></div>
 
-      {/* Floating Header */}
-      <header className="max-w-7xl mx-auto px-4 md:px-8 py-6 flex justify-center items-center relative z-10">
-        <div className="flex items-center gap-1.5 text-stone-700/80 font-serif font-medium tracking-wide">
-          <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
-          <span className="text-xs uppercase tracking-[0.3em] text-stone-500">Nikah Davetiyesi</span>
-        </div>
-      </header>
-
       {/* Hero section */}
       <main className="max-w-4xl mx-auto px-4 relative z-10 mt-6 text-center">
         <motion.div
