@@ -4,7 +4,7 @@ import { WeddingSettings, RSVPResponse, MusicRequest, GuestWish, PolaroidPhoto }
 export const DEFAULT_SETTINGS: WeddingSettings = {
   brideName: "Esra",
   groomName: "Hasan Eren",
-  brideParents: "Zülfüye Özbek & Fatih Mortaş",
+  brideParents: "Zülfiye Özbek & Fatih Mortaş",
   groomParents: "Esma Yılmaz & Hakan İşçi",
   weddingDate: "2026-09-05T13:00",
   venueName: "Gaziosmanpaşa Belediyesi Nikah Salonu",
