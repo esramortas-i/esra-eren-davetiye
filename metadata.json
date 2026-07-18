@@ -1,0 +1,6 @@
+{
+  "name": "Dijital Düğün Davetiyesi",
+  "description": "Zarif ve soft tasarımıyla, geri sayım sayacı, RSVP katılım formu, müzik istek listesi ve misafirlerin düğün günü fotoğraflarını yükleyebileceği Google Drive QR kodu içeren modern online düğün davetiyesi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
