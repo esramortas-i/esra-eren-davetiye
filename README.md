@@ -1,20 +1,19 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Esra & Hasan Eren - Nikah Davetiyesi
 
-# Run and deploy your AI Studio app
+Esra & Hasan Eren'in nikah töreni için zarif ve soft tasarımlı, geri sayım sayacı ve misafirlerin fotoğraf paylaşabileceği Google Drive QR kodu içeren online davetiye sitesi.
 
-This contains everything you need to run your app locally.
+Canlı demo: https://esra-eren-davetiye.vercel.app
 
-View your app in AI Studio: https://ai.studio/apps/05de10e6-b3d1-4e51-9cb2-a905f38e2378
+## Özellikler
 
-## Run Locally
+Geri sayım sayacı. Misafirlerin fotoğraf paylaşabileceği QR kod entegrasyonu. Responsive, modern tasarım.
 
-**Prerequisites:**  Node.js
+## Teknolojiler
 
+React, TypeScript, Vite.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Yerel Kurulum
+
+Gereksinimler: Node.js
+
+Bağımlılıkları yükleyin: `npm install`. `.env.local` dosyasını `.env.example` üzerinden oluşturup gerekli değişkenleri girin. Geliştirme sunucusunu başlatın: `npm run dev`.
