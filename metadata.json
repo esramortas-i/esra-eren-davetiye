@@ -1,6 +1,5 @@
 {
   "name": "Esra & Hasan Eren - Nikah Davetiyesi",
   "description": "Esra & Hasan Eren'in nikah töreni için zarif ve soft tasarımlı, geri sayım sayacı ve misafirlerin fotoğraf paylaşabileceği Google Drive QR kodu içeren online davetiye.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "requestFramePermissions": []
 }
