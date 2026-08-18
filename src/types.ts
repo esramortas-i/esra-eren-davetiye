@@ -3,14 +3,7 @@ export interface WeddingSettings {
   groomName: string;
   brideParents: string;
   groomParents: string;
-  weddingDate: string; // ISO format string (can be used as fallback or main date)
-  venueName: string;
-  venueAddress: string;
-  venueMapUrl: string;
-  kinaDate: string;
-  kinaVenueName: string;
-  kinaVenueAddress: string;
-  kinaVenueMapUrl: string;
+  weddingDate: string; // ISO format string, used for the countdown timer
   nikahDate: string;
   nikahVenueName: string;
   nikahVenueAddress: string;
@@ -19,42 +12,6 @@ export interface WeddingSettings {
   loveStoryText: string;
   driveUrl: string; // Google Drive folder link
   theme: "rose" | "sage" | "gold" | "lavender" | "slate";
-  hostPasswordCode: string;
-}
-
-export interface RSVPResponse {
-  id: string;
-  name: string;
-  isAttending: boolean;
-  guestCount: number;
-  dietPreference: "standard" | "vegan" | "vegetarian" | "child" | "none";
-  notes?: string;
-  timestamp: string;
-}
-
-export interface MusicRequest {
-  id: string;
-  songName: string;
-  artist: string;
-  requestedBy: string;
-  timestamp: string;
-}
-
-export interface GuestWish {
-  id: string;
-  name: string;
-  relation: string;
-  message: string;
-  emoji: string;
-  timestamp: string;
-}
-
-export interface PolaroidPhoto {
-  id: string;
-  src: string;
-  caption: string;
-  uploadedBy: string;
-  timestamp: string;
 }
 
 export type WeddingTheme = {

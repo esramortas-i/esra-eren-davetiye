@@ -1,20 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Heart,
-  Calendar,
   MapPin,
-  Music,
-  Users,
-  Clock,
   Sparkles,
   CalendarPlus,
-  CheckCircle2,
-  ExternalLink,
   ChevronDown,
 } from "lucide-react";
 import { motion } from "motion/react";
-import { WeddingSettings, RSVPResponse, MusicRequest } from "./types";
-import { DEFAULT_SETTINGS, formatTurkishDate, generateGoogleCalendarUrl, generateKinaCalendarUrl, generateNikahCalendarUrl } from "./utils";
+import { WeddingSettings } from "./types";
+import { DEFAULT_SETTINGS, formatTurkishDate, generateNikahCalendarUrl } from "./utils";
 import { WEDDING_THEMES } from "./themes";
 import PhotoGallery from "./components/PhotoGallery";
 import LeafIntro from "./components/LeafIntro";
@@ -28,23 +22,6 @@ export default function App() {
 
   // Settings loaded from localStorage or default
   const [settings, setSettings] = useState<WeddingSettings>(DEFAULT_SETTINGS);
-  const [rsvps, setRsvps] = useState<RSVPResponse[]>([]);
-  const [musicRequests, setMusicRequests] = useState<MusicRequest[]>([]);
-
-  // Invitation Form States
-  const [guestName, setGuestName] = useState("");
-  const [isAttending, setIsAttending] = useState<boolean | null>(null);
-  const [guestCount, setGuestCount] = useState(1);
-  const [dietPreference, setDietPreference] = useState<any>("standard");
-  const [notes, setNotes] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formError, setFormError] = useState("");
-
-  // Music Form States
-  const [songName, setSongName] = useState("");
-  const [artist, setArtist] = useState("");
-  const [requestedBy, setRequestedBy] = useState("");
-  const [musicSubmitted, setMusicSubmitted] = useState(false);
 
   // Countdown State
   const [timeLeft, setTimeLeft] = useState({
@@ -55,9 +32,8 @@ export default function App() {
     isOver: false,
   });
 
-  // Load Settings and dynamic lists from localStorage
+  // Load Settings from localStorage
   useEffect(() => {
-    // Settings
     const savedSettings = localStorage.getItem("wedding_invitation_settings");
     if (savedSettings) {
       try {
@@ -66,31 +42,6 @@ export default function App() {
         console.error(e);
       }
     }
-
-    // RSVPs
-    const savedRSVPs = localStorage.getItem("wedding_invitation_rsvps");
-    if (savedRSVPs) {
-      try {
-        setRsvps(JSON.parse(savedRSVPs));
-      } catch (e) {
-        console.error(e);
-      }
-    } else {
-      localStorage.setItem("wedding_invitation_rsvps", JSON.stringify([]));
-    }
-
-    // Music
-    const savedMusic = localStorage.getItem("wedding_invitation_music");
-    if (savedMusic) {
-      try {
-        setMusicRequests(JSON.parse(savedMusic));
-      } catch (e) {
-        console.error(e);
-      }
-    } else {
-      localStorage.setItem("wedding_invitation_music", JSON.stringify([]));
-    }
-
   }, []);
 
   // Countdown timer logic
@@ -146,80 +97,6 @@ export default function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [introDone]);
-
-  // Update RSVPs handler
-  const handleUpdateRSVPs = (newRSVPs: RSVPResponse[]) => {
-    setRsvps(newRSVPs);
-    localStorage.setItem("wedding_invitation_rsvps", JSON.stringify(newRSVPs));
-  };
-
-  // Update Music Requests handler
-  const handleUpdateMusic = (newMusic: MusicRequest[]) => {
-    setMusicRequests(newMusic);
-    localStorage.setItem("wedding_invitation_music", JSON.stringify(newMusic));
-  };
-
-  // Submit RSVP Form
-  const handleRSVPSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!guestName.trim()) {
-      setFormError("Lütfen isminizi girin.");
-      return;
-    }
-    if (isAttending === null) {
-      setFormError("Lütfen katılım durumunuzu seçin.");
-      return;
-    }
-
-    const newRSVP: RSVPResponse = {
-      id: `r-${Date.now()}`,
-      name: guestName.trim(),
-      isAttending,
-      guestCount: isAttending ? guestCount : 0,
-      dietPreference: isAttending ? dietPreference : "none",
-      notes: notes.trim() || undefined,
-      timestamp: new Date().toISOString(),
-    };
-
-    const updated = [newRSVP, ...rsvps];
-    handleUpdateRSVPs(updated);
-
-    // Reset Form
-    setGuestName("");
-    setIsAttending(null);
-    setGuestCount(1);
-    setDietPreference("standard");
-    setNotes("");
-    setFormError("");
-    setFormSubmitted(true);
-
-    // Fade out success notification after 5s
-    setTimeout(() => setFormSubmitted(false), 5000);
-  };
-
-  // Submit Music Request Form
-  const handleMusicSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!songName.trim() || !artist.trim() || !requestedBy.trim()) return;
-
-    const newRequest: MusicRequest = {
-      id: `m-${Date.now()}`,
-      songName: songName.trim(),
-      artist: artist.trim(),
-      requestedBy: requestedBy.trim(),
-      timestamp: new Date().toISOString(),
-    };
-
-    const updated = [newRequest, ...musicRequests];
-    handleUpdateMusic(updated);
-
-    setSongName("");
-    setArtist("");
-    setRequestedBy("");
-    setMusicSubmitted(true);
-
-    setTimeout(() => setMusicSubmitted(false), 5000);
-  };
 
   // Current Theme setup
   const theme = WEDDING_THEMES[settings.theme] || WEDDING_THEMES.rose;
